@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Enter your Grades</title>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <nav class="nav">
+            <!--insert navbar here!-->
+        </nav>
+
+        <h1>Enter Your Grades</h1><br>
+
+        <div class="gradeEntryForm">
+            <p><i>Required:</i></p>
+
+            <form action="">
+                <div class="left">
+                    <label for="year">Year: </label>
+                    <select name="year" id="year">
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                        <option value="2018">2018</option>
+                        <option value="2017">2017</option>
+                        <option value="2016">2016</option>
+                        <option value="2015">2015</option>
+                    </select><br>
+                    <label for="term">Term: </label>
+                    <select name="term" id="term">
+                        <option value="one">One</option>
+                        <option value="two">Two</option>
+                    </select><br>
+                    <label for="major">Major: </label>
+                    <input type="text" id="major"><br>
+                </div>
+                <div class="right">
+                    <label for="totalCredits">Total Credits: <input type="text" id="totalCredits"></label><br>
+                    <label for="termGpa">Term GPA: <input type="text" id="termGpa"> /4.0</label>
+                </div>
+
+                <hr>
+                <p><i>Optional: </i></p>
+                <label for="course">Course: </label>
+                <select name="course" id="course">
+                    <option value="CIS">CIS</option>
+                    <option value="FIN">FIN</option>
+                    <option value="ACC">ACC</option>
+                    <option value="MKT">MKT</option>
+                    <option value="MGT">MGT</option>
+                    <option value="ECN">ECN</option>
+                    <option value="SCM">SCM</option>
+                    <option value="ENG">ENG</option>
+                    <option value="COM">COM</option>
+                    <option value="WPC">WPC</option>
+                </select><br>
+                <label for="grade">Grade: <input type="text" id="grade"> /100</label><br>
+            </form>
+            <button onclick="submitGradeEntryData()" id="submitGradeEntryData">Submit</button>
+
+        </div>
+
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+    <script src="/js/app.js"></script>
+</body>
+
+</html>
