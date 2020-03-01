@@ -29,9 +29,8 @@ function registerOnSubmit() {
             break;
         } else {
             insertSignUpData(responses);
-            // insert code to create Account class?
-            // alert("Account succesfully created!");
-            // window.location.href = "index.html"
+            alert("Account succesfully created!");
+            window.location.href = "index.html"
             break;
         }
     }
@@ -70,51 +69,44 @@ function insertSignUpData(responses) {
 */
 
 function submitGradeEntryData() {
-    let school = $("#school").val();
     let year = $("#year").val();
     let term = $("#term").val();
-    let major = $("#major").val();
-    let cumGpa = $("#cumGpa").val();
-    let termGpa = $("#termGpa").val();
-    let course = $("#course").val();
-    let grade = $("#grade").val();
-    let required = [school, year, term, major, cumGpa, termGpa];
-    let fullGrades = [school, year, term, major, cumGpa, termGpa, course, grade];
-    let optional = false;
+    let totalCredits = $("#totalCredits").val();
+    let currentGpa = $("#currentGpa").val();
+    let gradeResponses = [year, term, totalCredits, currentGpa];
 
-    if (fullGrades[6] == "") {
-        //handle required
-        for (var i = 0; i < required.length; i++) {
-            if (required[i] == "") {
-                alert("Please complete all fields.");
-                break;
-            } else if (required[4] > 4 || required[5] > 4) {
-                alert("GPA cannot be over 4.0.");
-                break;
-            } else {
-                insertSignUpData(required);
-                break;
-            }
+    for (var i = 0; i < gradeResponses.length; i++) {
+        if (gradeResponses[i] == "") {
+            alert("Please complete all fields!");
+            break;
+        } else if (gradeResponses[3] > 4) {
+            alert("GPA cannot be over 4.0.");
+            break;
+        } else {
+            insertGradeEntryData(gradeResponses);
+            break;
         }
-    } else {
-        // handle fullGrades
-        for(var i = 0; i < fullGrades.length; i++) {
-            if (fullGrades[i] == "") {
-                alert("Please complete all fields.");
-                break;
-            } else if (fullGrades[4] > 4 || fullGrades[5] > 4) {
-                alert("GPA cannot be over 4.0.");
-                break;
-            } else if(fullGrades[7] > 100) {
-                alert("Grade cannot be over 100.");
-                break;
-            } else {
-                insertSignUpData(fullGrades);
-                break;
-            }
-        }
+    }      
+}
 
-    }
+function insertGradeEntryData(grades) {
+    let gradeResponses = {
+        "Year": grades[0],
+        "Term": grades[1],
+        "Total_Credits": grades[2],
+        "CurrentGPA": grades[3]
+    };
+
+    $.ajax({
+        type: 'POST',
+        url: "AccountServices.asmx/HandleGradeEntryData",
+        data: JSON.stringify(gradeResponses),
+        contentType: "application/json; charset=utf-8",
+        dataType: 'json',
+        success: function (msg) {
+            console.log("success");
+        }
+    });
 }
 
 // GetAccounts js and ajax call

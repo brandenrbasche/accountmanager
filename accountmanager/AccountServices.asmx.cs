@@ -121,6 +121,36 @@ namespace accountmanager
 			sqlConnection.Close();
 		}
 
+		// METHOD TO HANDLE GRADE ENTRY DATA
+		[WebMethod(EnableSession = true)]
+		public void HandleGradeEntryData(int Year, string Term, int Total_Credits, double CurrentGPA)
+		{
+			string sqlConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["pentest"].ConnectionString;
+
+			string sqlSelect = "INSERT INTO Grades (Year, Term, Total_Credits, CurrentGPA) " +
+				"VALUES (@yearValue, @termValue, @totalCreditsValue, @currentGpaValue);";
+
+			//"SELECT LAST_INSERT_ID();";
+			MySqlConnection sqlConnection = new MySqlConnection(sqlConnectString);
+			MySqlCommand sqlCommand = new MySqlCommand(sqlSelect, sqlConnection);
+
+			sqlCommand.Parameters.AddWithValue("@yearValue", Year);
+			sqlCommand.Parameters.AddWithValue("@termValue", Term);
+			sqlCommand.Parameters.AddWithValue("@totalCreditsValue", Total_Credits);
+			sqlCommand.Parameters.AddWithValue("@currentGpaValue", CurrentGPA);
+
+			sqlConnection.Open();
+
+			try
+			{
+				sqlCommand.ExecuteNonQuery();
+			}
+			catch (Exception e)
+			{
+			}
+			sqlConnection.Close();
+		}
+
 		//EXAMPLE OF A SELECT, AND RETURNING "COMPLEX" DATA TYPES
 		[WebMethod(EnableSession = true)]
 		//[ScriptMethod(ResponseFormat = ResponseFormat.Json)]
