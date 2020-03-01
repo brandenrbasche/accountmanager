@@ -39,7 +39,7 @@ function registerOnSubmit() {
 // Put data into database
 function insertSignUpData(responses) {
     let userData = {
-        "user_ID":responses[0],
+        "user_ID": responses[0],
         "University_name": responses[1],
         "Fname": responses[2],
         "Lname": responses[3],
@@ -57,7 +57,7 @@ function insertSignUpData(responses) {
         data: JSON.stringify(userData),
         contentType: "application/json; charset=utf-8",
         dataType: 'json',
-        success: function(msg) {
+        success: function (msg) {
             console.log("success");
         }
     });
@@ -86,7 +86,7 @@ function submitGradeEntryData() {
             insertGradeEntryData(gradeResponses);
             break;
         }
-    }      
+    }
 }
 
 function insertGradeEntryData(grades) {
@@ -127,12 +127,10 @@ function getChartData() {
             chart.draw(data, options);
 
             console.log(data);
-            
+
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log('Could not get posts, server response: ' + textStatus + ': ' + errorThrown);
         }
     }).responseJSON;
 }
-
-

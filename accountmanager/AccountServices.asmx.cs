@@ -188,7 +188,7 @@ namespace accountmanager
 			//convert the list of accounts to an array and return!
 			System.Web.Script.Serialization.JavaScriptSerializer jss = new System.Web.Script.Serialization.JavaScriptSerializer();
 			this.Context.Response.ContentType = "application/json; charset=utf-8";
-			this.Context.Response.Write(jss.Serialize(grades.ToArray())); 
+			this.Context.Response.Write(jss.Serialize(grades.ToArray()));
 		}
 
 		//EXAMPLE OF AN UPDATE QUERY WITH PARAMS PASSED IN
@@ -267,7 +267,8 @@ namespace accountmanager
 				//convert the list of accounts to an array and return!
 				return accountRequests.ToArray();
 			}
-			else {
+			else
+			{
 				return new Account[0];
 			}
 		}
